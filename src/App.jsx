@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import TitleApp from './components/Title_App';
+import PropTypes from 'prop-types'
+
 
 function App() {
   const [newItem, setNewItem] = useState(""); // Use "newItem" em vez de "todo"
@@ -25,11 +28,12 @@ function App() {
 
   return (
     <div className='app'>
-      <h1>Todo List App</h1>
+      <TitleApp />
 
       <input
+      className='InputTag'
         type="text"
-        placeholder='Add an item...'
+        placeholder='Adicione um item aqui...'
         value={newItem} // Use "newItem" em vez de "todo"
         onChange={change => setNewItem(change.target.value)} // Corrija a função de callback
       />
@@ -38,6 +42,7 @@ function App() {
         {items.map(item=>{
           return(
             <li key={item.id}>{item.value} <button onClick={()=>deleteItem(item.id)}></button></li>
+
           )
         })}
       </ul>  
@@ -46,6 +51,9 @@ function App() {
     
   );
 }
+
+
+
 
 export default App;
 
